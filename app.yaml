@@ -1,0 +1,13 @@
+runtime: nodejs14
+ 
+instance_class: F1
+ 
+automatic_scaling:
+  target_cpu_utilization: 0.7
+  min_instances: 1
+  max_instances: 5
+  min_pending_latency: 30ms
+  max_pending_latency: automatic
+
+env_variables:
+  TZ: Asia/Kolkata

@@ -1,0 +1,55 @@
+`<!DOCTYPE html>
+    <html>
+    <head>
+      <title>PDF Display</title>
+      <style>
+        #pdfIframe {
+          width: 100%;
+          height: 100vh;
+          border: none;
+          transform-origin: 0 0;
+          transition: transform 0.3s;
+        }
+      </style>
+        <script>
+          function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+          }
+      
+          // Example usage:
+          window.onload = function() {
+            const url = getQueryParam('url');
+            
+            document.getElementById('pdfIframe').src = url;
+          };
+        </script>
+    </head>
+    <body>
+      <h1>PDF Display</h1>
+      <button id="zoomInBtn">Zoom In</button>
+      <button id="zoomOutBtn">Zoom Out</button>
+      <iframe id="pdfIframe" src=""></iframe>
+    
+      <script>
+        const iframe = document.getElementById('pdfIframe');
+        const zoomInBtn = document.getElementById('zoomInBtn');
+        const zoomOutBtn = document.getElementById('zoomOutBtn');
+        let zoomLevel = 1;
+    
+        zoomInBtn.addEventListener('click', () => {
+          zoomLevel += 0.1;
+          updateZoom();
+        });
+    
+        zoomOutBtn.addEventListener('click', () => {
+          zoomLevel -= 0.1;
+          updateZoom();
+        });
+    
+        function updateZoom() {
+          iframe.style.transform = `scale(${zoomLevel})`;
+        }
+      </script>
+    </body>
+    </html>
